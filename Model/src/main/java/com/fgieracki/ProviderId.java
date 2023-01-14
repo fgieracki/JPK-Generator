@@ -11,6 +11,8 @@ public class ProviderId {
     @XmlElement(name="etd:PelnaNazwa")
     private static String PelnaNazwa = "\"CORE LOGIC\" SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ";
 
+    ProviderId() {}
+
     public static String getNIP() {
         return NIP;
     }

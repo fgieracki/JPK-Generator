@@ -9,56 +9,41 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
+@SuppressWarnings("java:S106") // Standard output is used to display messages to the user
 public class XLSXDataReader implements DataReader {
-    public List<InvoicePositionInput> readInvoicePositionsFromFile(String filePath, char fieldSeparator) throws IOException {
-        FileInputStream fis = null;
-        Workbook workbook = null;
+    public List<InvoicePosition> readInvoicePositionsFromFile(String filePath, char fieldSeparator) {
+        List<InvoicePosition> invoicePositions = new ArrayList<>();
 
-        List<InvoicePositionInput> invoicePositionInputs = new ArrayList<InvoicePositionInput>();
-
-        try{
-            fis = new FileInputStream(filePath);
-            workbook  = new XSSFWorkbook(fis);
+        try(
+            FileInputStream fis = new FileInputStream(filePath);
+            Workbook workbook  = new XSSFWorkbook(fis)
+        ){
             Sheet sheet = workbook.getSheetAt(0);
 
             for (Row row : sheet) {
                 if(row.getRowNum() == 0) continue;
-                InvoicePositionInput invoicePositionInput = parseRow(row);
-                invoicePositionInputs.add(invoicePositionInput);
+                invoicePositions.add(parseRow(row));
             }
         } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (fis != null)
-                fis.close();
-
-            if(workbook != null)
-                workbook.close();
+            System.out.println("Error while reading file. Please check if the file is not corrupted");
         }
-        return invoicePositionInputs;
+        return invoicePositions;
     }
-    private InvoicePositionInput parseRow(Row row){
-        
-        
-        return new InvoicePositionInput(
-            row.getCell(0).toString(),
-            row.getCell(1).toString(),
-            row.getCell(2).toString(),
-            row.getCell(3).toString(),
-            row.getCell(4).toString(),
-            row.getCell(5).toString(),
-            row.getCell(6).toString(),
-            row.getCell(7).toString(),
-            row.getCell(8).toString(),
-            row.getCell(9).toString(),
-            row.getCell(10).toString(),
-            row.getCell(11).toString(),
-            row.getCell(12).toString(),
-            row.getCell(13).toString(),
-            row.getCell(14).toString()
-        );
+    private InvoicePosition parseRow(Row row){
+        ArrayList<String> fields = new ArrayList<>();
+        for(Cell cell : row)
+            fields.add(cell.toString());
+
+        for(int i = 7; i < 15; i++)
+            fields.set(i, Mappers.mapBigDecimalString(fields.get(i)));
+        if(fields.size() != 15) {
+            System.out.println("Error while reading file. Please check if the file is not corrupted");
+            return null;
+        }
+
+
+        return new InvoicePosition(fields);
     }
 }

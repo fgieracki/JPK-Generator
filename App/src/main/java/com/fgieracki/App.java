@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+@SuppressWarnings("java:S106") // System.out.println is used for console output
 public class App {
 
     public static void main(String[] args) throws IOException, JAXBException {
@@ -28,14 +29,7 @@ public class App {
             }
         }
 
-        String outputFilePath = args[1];
-
-        FileOutputStream fileOutputStream;
-        fileOutputStream = new FileOutputStream(outputFilePath);
-
-        PrintStream outputStream = new PrintStream(fileOutputStream);
-
-        filePath = filePath.concat("\\faktury-sprzedazowe-test-2023.xlsx");
+//        filePath = filePath.concat("\\faktury-sprzedazowe-test-2023.xlsx");
         DataReader dataReader;
 
         if(filePath.contains(".csv")){
@@ -44,11 +38,19 @@ public class App {
             dataReader = new XLSXDataReader();
         }
 
-        ArrayList<InvoicePositionInput> input = (ArrayList<InvoicePositionInput>) dataReader.readInvoicePositionsFromFile(filePath, '\t');
-        data.invoicePositions = Mappers.mapToInvoicePositions(input);
+//        ArrayList<InvoicePositionInput> input = (ArrayList<InvoicePositionInput>) dataReader.readInvoicePositionsFromFile(filePath, '\t');
+//        data.invoicePositions = Mappers.mapToInvoicePositions(input);
+        data.invoicePositions = (ArrayList<InvoicePosition>) dataReader.readInvoicePositionsFromFile(filePath, '\t');
         data.invoices = InvoiceGenerator.generateInvoices((ArrayList<InvoicePosition>) data.invoicePositions);
         data.makeSummary();
 
+
+        String outputFilePath = args[1];
+
+        FileOutputStream fileOutputStream;
+        fileOutputStream = new FileOutputStream(outputFilePath);
+
+        PrintStream outputStream = new PrintStream(fileOutputStream);
         DataWriter.writeDataToOutput(data, outputStream);
     }
 

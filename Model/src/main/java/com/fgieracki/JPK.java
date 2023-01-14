@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@SuppressWarnings("java:S2440") // This is needed for JAXB to work properly
 @XmlRootElement(name = "tns:JPK")
 public class JPK {
 

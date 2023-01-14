@@ -3,8 +3,10 @@ package com.fgieracki;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
+@SuppressWarnings("java:S2440") // This is needed for JAXB to work properly
 @XmlRootElement(name = "tns:Podmiot1")
 public class Provider {
+    Provider(){}
 
     @XmlElement(name="tns:IdentyfikatorPodmiotu")
     static ProviderId _providerId = new ProviderId();

@@ -5,14 +5,16 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+@SuppressWarnings({"java:S116", "java:S100"}) // variable names match the XML schema
 @XmlRootElement(name = "tns:Faktura")
 public class Invoice {
     @XmlTransient
-    private String falseString = "false";
+    private final String falseString = "false";
 
     @XmlElement(name="tns:KodWaluty")
-    private String KodWaluty = "PLN";
+    private final String currencyCode = "PLN";
 
     @XmlElement(name="tns:P_1")
     private String P_1;
@@ -93,31 +95,30 @@ public class Invoice {
     public Invoice() {
     }
 
-    public Invoice(
-            String P_1, String P_2A, String P_3A, String P_3B,
-            String P_3C, String P_3D, String P_4B,
-            String P_5B, String P_6, String P_13_1, String P_14_1,
-            String P_15) {
-                this.P_1 = P_1;
-                this.P_2A = P_2A;
-                this.P_3A = P_3A;
-                this.P_3B = P_3B;
-                this.P_3C = P_3C;
-                this.P_3D = P_3D;
-                this.P_4B = P_4B;
-                this.P_5B = P_5B;
-                this. P_6 = P_6;
-                this.P_13_1 = P_13_1;
-                this.P_14_1 = P_14_1;
-                this.P_15 = P_15;
+    public Invoice(List<String> fields) {
+                if(fields.size() != 12) {
+                    throw new IllegalArgumentException("Wrong number of fields");
+                }
 
+                this.P_1 = fields.get(0);
+                this.P_2A = fields.get(1);
+                this.P_3A = fields.get(2);
+                this.P_3B = fields.get(3);
+                this.P_3C = fields.get(4);
+                this.P_3D = fields.get(5);
+                this.P_4B = fields.get(6);
+                this.P_5B = fields.get(7);
+                this. P_6 = fields.get(8);
+                this.P_13_1 = fields.get(9);
+                this.P_14_1 = fields.get(10);
+                this.P_15 = fields.get(11);
     }
 
     @Override
     public String toString() {
         return "Invoice{" +
                 "falseString='" + falseString + '\'' +
-                ", KodWaluty='" + KodWaluty + '\'' +
+                ", KodWaluty='" + currencyCode + '\'' +
                 ", P_1='" + P_1 + '\'' +
                 ", P_2A='" + P_2A + '\'' +
                 ", P_3A='" + P_3A + '\'' +

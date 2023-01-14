@@ -6,6 +6,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@SuppressWarnings("java:S2440") // This is needed for JAXB to work properly
 @XmlRootElement(name = "tns:Naglowek")
 public class HeadLine {
 
@@ -14,23 +15,23 @@ public class HeadLine {
     private static FormCode formCode = new FormCode();
 
     @XmlElement(name="tns:WariantFormularza")
-    private static String WariantFormularza = "3";
+    private static String formVariant = "3";
 
     @XmlElement(name="tns:CelZlozenia")
-    private static String CelZlozenia = "1";
+    private static String submissionPurpose = "1";
 
     @XmlElement(name="tns:DataWytworzeniaJPK")
-    private static String DataWytworzeniaJPK = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS"));
-
+    private static String creationDateTime = LocalDateTime.now()
+            .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS"));
 
     @XmlElement(name="tns:DataOd")
-    private static String DataOd = "2021-10-01";
+    private static String dateFrom = "2021-10-01";
 
     @XmlElement(name="tns:DataDo")
-    private static String DataDo = "2021-10-31";
+    private static String dateTo = "2021-10-31";
 
     @XmlElement(name="tns:KodUrzedu")
-    private static String KodUrzedu = "1208";
+    private static String officeCode = "1208";
 
     HeadLine() {}
 
