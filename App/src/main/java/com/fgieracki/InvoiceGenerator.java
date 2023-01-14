@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class InvoiceGenerator {
+
+    InvoiceGenerator() {}
+
     static HashMap<String, Invoice> generateInvoices(ArrayList<InvoicePosition> invoicePositions) {
         HashMap<String, Invoice> result = new HashMap<>();
         for(InvoicePosition invoicePosition : invoicePositions) {

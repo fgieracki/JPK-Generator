@@ -1,12 +1,21 @@
 package com.fgieracki;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@XmlRootElement(name = "tns:FakturaCtrl")
 public class InvoiceCtrl {
+
+    @XmlElement(name = "tns:LiczbaFaktur")
     private int LiczbaFaktur;
-    private BigDecimal WartoscFaktur = new BigDecimal(0);
+
+    @XmlElement(name = "tns:WartoscFaktur")
+    private BigDecimal WartoscFaktur = new BigDecimal(0).setScale(2, RoundingMode.HALF_EVEN);
 
 
     public InvoiceCtrl() {

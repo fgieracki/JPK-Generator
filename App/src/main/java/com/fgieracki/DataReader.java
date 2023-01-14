@@ -4,5 +4,5 @@ import java.io.IOException;
 import java.util.List;
 
 public interface DataReader {
-    abstract public List<InvoicePositionInput> readIntoInvoicePositions(String filePath) throws IOException;
+    public abstract List<InvoicePositionInput> readInvoicePositionsFromFile(String filePath, char fieldSeparator) throws IOException;
 }

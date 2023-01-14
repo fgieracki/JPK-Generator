@@ -3,13 +3,15 @@ package com.fgieracki;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @XmlRootElement(name = "tns:Naglowek")
 public class HeadLine {
-//    private static String kodSystemowy = "JPK_FA (3)";
-//    private static String wersjaSchemy = "1-0";
+
 
     @XmlElement(name="tns:KodFormularza")
-    private static String KodFormularza = "JPK_FA";
+    private static FormCode formCode = new FormCode();
 
     @XmlElement(name="tns:WariantFormularza")
     private static String WariantFormularza = "3";
@@ -18,7 +20,8 @@ public class HeadLine {
     private static String CelZlozenia = "1";
 
     @XmlElement(name="tns:DataWytworzeniaJPK")
-    private static String DataWytworzeniaJPK = "2021-10-28T16:30:54.533";
+    private static String DataWytworzeniaJPK = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS"));
+
 
     @XmlElement(name="tns:DataOd")
     private static String DataOd = "2021-10-01";
@@ -28,5 +31,7 @@ public class HeadLine {
 
     @XmlElement(name="tns:KodUrzedu")
     private static String KodUrzedu = "1208";
+
+    HeadLine() {}
 
 }

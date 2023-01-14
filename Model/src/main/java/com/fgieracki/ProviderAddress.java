@@ -31,7 +31,7 @@ public class ProviderAddress {
     private static String Miejscowosc = "Kraków";
 
     @XmlElement(name="etd:KodPocztowy")
-    private static String KodPocztowy = "31-001";
+    private static String KodPocztowy = "31-065";
 
     public static String stringAddress() {
         return Ulica + " " + NrDomu + "/" + NrLokalu + ", " + KodPocztowy + " " + Miejscowosc;

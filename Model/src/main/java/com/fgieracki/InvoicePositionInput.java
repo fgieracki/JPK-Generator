@@ -52,6 +52,30 @@ public class InvoicePositionInput {
     private String P_9B; //cena brutto (łącznie)
     private String P_8A = "szt"; //jednostka miary
 
+    public InvoicePositionInput(){}
+
+    public InvoicePositionInput(
+            String P_3A, String P_3B, String P_5B, String P_1,
+            String P_6, String P_2B, String P_7, String P_8B,
+            String P_9A, String P_12, String P_14_1, String P_11,
+            String P_11A, String P_13_1, String P_15
+    ){
+        this.P_3A = P_3A;
+        this.P_3B = P_3B;
+        this.P_5B = P_5B;
+        this.P_1 = P_1;
+        this.P_6 = P_6;
+        this.P_2B = P_2B;
+        this.P_7 = P_7;
+        this.P_8B = P_8B;
+        this.P_9A = P_9A;
+        this.P_12 = P_12;
+        this.P_14_1 = P_14_1;
+        this.P_11 = P_11;
+        this.P_11A = P_11A;
+        this.P_13_1 = P_13_1;
+        this.P_15 = P_15;;
+    }
 
     public String getP_3A() {
         return P_3A;

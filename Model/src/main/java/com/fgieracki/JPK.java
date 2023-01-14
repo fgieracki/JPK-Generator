@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @XmlRootElement(name = "tns:JPK")
-public class AppData {
+public class JPK {
 
     @XmlAttribute(name = "xmlns:tns")
     private String tns = "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/";
