@@ -5,7 +5,6 @@ import org.apache.commons.beanutils.converters.BigDecimalConverter;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.List;
 
 @SuppressWarnings("java:S106") // System.out.println is used for console output
 public class Mappers {
@@ -15,11 +14,11 @@ public class Mappers {
         String value = input;
 
         value = value.replace("zł", "").replace(",", ".").trim()
-                .replace("\u00A0", "").replaceAll("\s+", "");;
+                .replace("\u00A0", "").replaceAll("\s+", "");
         BigDecimalConverter converter = new BigDecimalConverter();
         BigDecimal res = BigDecimal.ZERO;
         try {
-            res = (BigDecimal) converter.convert(BigDecimal.class, value);
+            res = converter.convert(BigDecimal.class, value);
         } catch (Exception e) {
             System.out.println("BigDecimal conversion exception: " + input + " -> " + value);
         }

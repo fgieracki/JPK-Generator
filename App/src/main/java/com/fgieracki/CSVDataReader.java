@@ -3,13 +3,13 @@ package com.fgieracki;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("java:S106") // System.out.println is used for console output
 public class CSVDataReader implements DataReader {
     public List<InvoicePosition> readInvoicePositionsFromFile(String filePath, char fieldSeparator) throws IOException {
         ArrayList<InvoicePosition> invoicePositions = new ArrayList<>();
@@ -25,13 +25,13 @@ public class CSVDataReader implements DataReader {
                     .parse(reader);
 
             boolean isFirstRecord = true;
-            for (CSVRecord record : records) {
+            for (CSVRecord row : records) {
                 if (isFirstRecord) {
                     isFirstRecord = false;
                     continue;
                 }
                 ArrayList<String> fields = new ArrayList<>();
-                for (String field : record)
+                for (String field : row)
                     fields.add(field);
                 for(int i = 7; i < 15; i++)
                     fields.set(i, Mappers.mapBigDecimalString(fields.get(i)));
@@ -43,16 +43,3 @@ public class CSVDataReader implements DataReader {
         return invoicePositions;
     }
 }
-
-//    public List<String[]> readLineByLine(Path filePath) throws Exception {
-//        List<String[]> list = new ArrayList<>();
-//        try (Reader reader = Files.newBufferedReader(filePath)) {
-//            try (CSVReader csvReader = new CSVReader(reader)) {
-//                String[] line;
-//                while ((line = csvReader.readNext()) != null) {
-//                    list.add(line);
-//                }
-//            }
-//        }
-//        return list;
-//    }

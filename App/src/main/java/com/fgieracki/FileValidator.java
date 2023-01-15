@@ -8,11 +8,11 @@ public class FileValidator {
             return checkSuffix(filePath) && checkIfFileExists(filePath);
         }
 
-        private static boolean checkSuffix(String filePath) {
+        protected static boolean checkSuffix(String filePath) {
             return filePath.endsWith(".csv") || filePath.endsWith(".xlsx");
         }
 
-        private static boolean checkIfFileExists(String filePath) {
+        protected static boolean checkIfFileExists(String filePath) {
             return new File(filePath).exists();
         }
 

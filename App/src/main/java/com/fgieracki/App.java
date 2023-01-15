@@ -29,7 +29,6 @@ public class App {
             }
         }
 
-//        filePath = filePath.concat("\\faktury-sprzedazowe-test-2023.xlsx");
         DataReader dataReader;
 
         if(filePath.contains(".csv")){
@@ -38,8 +37,6 @@ public class App {
             dataReader = new XLSXDataReader();
         }
 
-//        ArrayList<InvoicePositionInput> input = (ArrayList<InvoicePositionInput>) dataReader.readInvoicePositionsFromFile(filePath, '\t');
-//        data.invoicePositions = Mappers.mapToInvoicePositions(input);
         data.invoicePositions = (ArrayList<InvoicePosition>) dataReader.readInvoicePositionsFromFile(filePath, '\t');
         data.invoices = InvoiceGenerator.generateInvoices((ArrayList<InvoicePosition>) data.invoicePositions);
         data.makeSummary();
