@@ -13,8 +13,8 @@ public class Mappers {
     public static String mapBigDecimalString(String input) {
         String value = input;
 
-        value = value.replace("zł", "").replace(",", ".").trim()
-                .replace("\u00A0", "").replaceAll("\s+", "");
+        value = value.replace(",", ".")
+                .replaceAll("[^\\d.]", "");
         BigDecimalConverter converter = new BigDecimalConverter();
         BigDecimal res = BigDecimal.ZERO;
         try {

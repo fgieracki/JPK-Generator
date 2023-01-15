@@ -1,0 +1,20 @@
+
+n
+java:S3008
+"SRename this field "KodKraju" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÌ¥õşÿÿÿÿ
+l
+java:S3008"VRename this field "Wojewodztwo" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÓ
+l
+java:S3008"QRename this field "Powiat" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚Íâşÿÿÿÿ
+f
+java:S3008"PRename this field "Gmina" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘î×
+k
+java:S3008"PRename this field "Ulica" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î±İ¡şÿÿÿÿ
+l
+java:S3008"QRename this field "NrDomu" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚ûÈŞøÿÿÿÿ
+i
+java:S3008"SRename this field "NrLokalu" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãÈ¯‹
+q
+java:S3008"VRename this field "Miejscowosc" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á±Á‹şÿÿÿÿ
+l
+java:S3008""VRename this field "KodPocztowy" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ª‹µ»

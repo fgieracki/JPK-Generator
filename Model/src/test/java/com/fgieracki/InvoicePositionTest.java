@@ -122,5 +122,10 @@ public class InvoicePositionTest {
 
     @Test
     public void testToString() {
+            String expected = "InvoicePosition{P_3A='1', P_3B='2', " +
+                    "P_5B='3', P_1='4', P_6='5', P_2B='6', P_7='7', " +
+                    "P_8B=8, P_9A=9, P_12=10, P_14_1=11, P_11=12, P_11A=13, " +
+                    "P_13_1=14, P_15=15, P_9B=9.90, P_8A='szt'}";
+            assertEquals(expected, invoicePosition.toString().trim());
     }
 }
