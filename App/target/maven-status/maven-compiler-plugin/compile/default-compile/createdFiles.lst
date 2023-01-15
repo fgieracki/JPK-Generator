@@ -1,8 +1,0 @@
-com\fgieracki\DataWriter.class
-com\fgieracki\App.class
-com\fgieracki\InvoiceGenerator.class
-com\fgieracki\Mappers.class
-com\fgieracki\DataReader.class
-com\fgieracki\XLSXDataReader.class
-com\fgieracki\CSVDataReader.class
-com\fgieracki\FileValidator.class
